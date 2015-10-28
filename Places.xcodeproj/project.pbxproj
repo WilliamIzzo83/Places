@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D35B0751BDEE0A500830B95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D35B0741BDEE0A500830B95 /* AppDelegate.swift */; };
+		3D35B07C1BDEE0A500830B95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D35B07A1BDEE0A500830B95 /* Main.storyboard */; };
+		3D35B07E1BDEE0A500830B95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D35B07D1BDEE0A500830B95 /* Assets.xcassets */; };
+		3D35B0811BDEE0A500830B95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D35B07F1BDEE0A500830B95 /* LaunchScreen.storyboard */; };
+		3D35B08D1BE014F100830B95 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D35B08C1BE014F100830B95 /* Place.swift */; };
+		3D35B0901BE0171600830B95 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D35B08F1BE0171600830B95 /* libc++.tbd */; };
+		3D35B0921BE0172100830B95 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D35B0911BE0172100830B95 /* RealmSwift.framework */; };
+		3D35B0951BE017CF00830B95 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3D35B0911BE0172100830B95 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D35B0961BE017E100830B95 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3D35B0881BDF61C100830B95 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D35B0991BE01F2900830B95 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D35B0981BE01F2900830B95 /* MainViewController.swift */; };
+		3D35B09B1BE023B000830B95 /* AddPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D35B09A1BE023B000830B95 /* AddPlaceViewController.swift */; };
+		3D35B09D1BE02AA900830B95 /* PlacesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D35B09C1BE02AA900830B95 /* PlacesListViewController.swift */; };
+		3D35B0A01BE02E2A00830B95 /* PlaceTVR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D35B09F1BE02E2A00830B95 /* PlaceTVR.swift */; };
+		3D35B0A21BE14A5B00830B95 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D35B0A11BE14A5B00830B95 /* AVFoundation.framework */; };
+		3D35B0A61BE14B5400830B95 /* CameraCaputre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D35B0A51BE14B5400830B95 /* CameraCaputre.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3D35B0941BE017C100830B95 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3D35B0961BE017E100830B95 /* Realm.framework in CopyFiles */,
+				3D35B0951BE017CF00830B95 /* RealmSwift.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3D35B0711BDEE0A500830B95 /* Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D35B0741BDEE0A500830B95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3D35B07B1BDEE0A500830B95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3D35B07D1BDEE0A500830B95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3D35B0801BDEE0A500830B95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3D35B0821BDEE0A500830B95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D35B0881BDF61C100830B95 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Places/Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		3D35B08C1BE014F100830B95 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Place.swift; path = model/Place.swift; sourceTree = "<group>"; };
+		3D35B08F1BE0171600830B95 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		3D35B0911BE0172100830B95 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Places/Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		3D35B0981BE01F2900830B95 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = controllers/MainViewController.swift; sourceTree = "<group>"; };
+		3D35B09A1BE023B000830B95 /* AddPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddPlaceViewController.swift; path = controllers/AddPlaceViewController.swift; sourceTree = "<group>"; };
+		3D35B09C1BE02AA900830B95 /* PlacesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesListViewController.swift; path = controllers/PlacesListViewController.swift; sourceTree = "<group>"; };
+		3D35B09F1BE02E2A00830B95 /* PlaceTVR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceTVR.swift; path = view/PlaceTVR.swift; sourceTree = "<group>"; };
+		3D35B0A11BE14A5B00830B95 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3D35B0A51BE14B5400830B95 /* CameraCaputre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraCaputre.swift; path = io/CameraCaputre.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D35B06E1BDEE0A500830B95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D35B0A21BE14A5B00830B95 /* AVFoundation.framework in Frameworks */,
+				3D35B0901BE0171600830B95 /* libc++.tbd in Frameworks */,
+				3D35B0921BE0172100830B95 /* RealmSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D35B0681BDEE0A500830B95 = {
+			isa = PBXGroup;
+			children = (
+				3D35B0A31BE14A6900830B95 /* libs_frameworks */,
+				3D35B0731BDEE0A500830B95 /* Places */,
+				3D35B0721BDEE0A500830B95 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3D35B0721BDEE0A500830B95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D35B0711BDEE0A500830B95 /* Places.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D35B0731BDEE0A500830B95 /* Places */ = {
+			isa = PBXGroup;
+			children = (
+				3D35B0A41BE14AD200830B95 /* io */,
+				3D35B09E1BE02E0F00830B95 /* views */,
+				3D35B0971BE01F0300830B95 /* controllers */,
+				3D35B08B1BE0149200830B95 /* model */,
+				3D35B0741BDEE0A500830B95 /* AppDelegate.swift */,
+				3D35B07A1BDEE0A500830B95 /* Main.storyboard */,
+				3D35B07D1BDEE0A500830B95 /* Assets.xcassets */,
+				3D35B07F1BDEE0A500830B95 /* LaunchScreen.storyboard */,
+				3D35B0821BDEE0A500830B95 /* Info.plist */,
+			);
+			path = Places;
+			sourceTree = "<group>";
+		};
+		3D35B08B1BE0149200830B95 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				3D35B08C1BE014F100830B95 /* Place.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		3D35B0971BE01F0300830B95 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3D35B0981BE01F2900830B95 /* MainViewController.swift */,
+				3D35B09A1BE023B000830B95 /* AddPlaceViewController.swift */,
+				3D35B09C1BE02AA900830B95 /* PlacesListViewController.swift */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		3D35B09E1BE02E0F00830B95 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				3D35B09F1BE02E2A00830B95 /* PlaceTVR.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		3D35B0A31BE14A6900830B95 /* libs_frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D35B0A11BE14A5B00830B95 /* AVFoundation.framework */,
+				3D35B08F1BE0171600830B95 /* libc++.tbd */,
+				3D35B0911BE0172100830B95 /* RealmSwift.framework */,
+				3D35B0881BDF61C100830B95 /* Realm.framework */,
+			);
+			name = libs_frameworks;
+			sourceTree = "<group>";
+		};
+		3D35B0A41BE14AD200830B95 /* io */ = {
+			isa = PBXGroup;
+			children = (
+				3D35B0A51BE14B5400830B95 /* CameraCaputre.swift */,
+			);
+			name = io;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3D35B0701BDEE0A500830B95 /* Places */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D35B0851BDEE0A500830B95 /* Build configuration list for PBXNativeTarget "Places" */;
+			buildPhases = (
+				3D35B06D1BDEE0A500830B95 /* Sources */,
+				3D35B06E1BDEE0A500830B95 /* Frameworks */,
+				3D35B06F1BDEE0A500830B95 /* Resources */,
+				3D35B08A1BDF621300830B95 /* ShellScript */,
+				3D35B0941BE017C100830B95 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Places;
+			productName = Places;
+			productReference = 3D35B0711BDEE0A500830B95 /* Places.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3D35B0691BDEE0A500830B95 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "wizzo s.l.d.s.";
+				TargetAttributes = {
+					3D35B0701BDEE0A500830B95 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+				};
+			};
+			buildConfigurationList = 3D35B06C1BDEE0A500830B95 /* Build configuration list for PBXProject "Places" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3D35B0681BDEE0A500830B95;
+			productRefGroup = 3D35B0721BDEE0A500830B95 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D35B0701BDEE0A500830B95 /* Places */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D35B06F1BDEE0A500830B95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D35B0811BDEE0A500830B95 /* LaunchScreen.storyboard in Resources */,
+				3D35B07E1BDEE0A500830B95 /* Assets.xcassets in Resources */,
+				3D35B07C1BDEE0A500830B95 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3D35B08A1BDF621300830B95 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D35B06D1BDEE0A500830B95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D35B0A61BE14B5400830B95 /* CameraCaputre.swift in Sources */,
+				3D35B0A01BE02E2A00830B95 /* PlaceTVR.swift in Sources */,
+				3D35B09B1BE023B000830B95 /* AddPlaceViewController.swift in Sources */,
+				3D35B0991BE01F2900830B95 /* MainViewController.swift in Sources */,
+				3D35B0751BDEE0A500830B95 /* AppDelegate.swift in Sources */,
+				3D35B09D1BE02AA900830B95 /* PlacesListViewController.swift in Sources */,
+				3D35B08D1BE014F100830B95 /* Place.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3D35B07A1BDEE0A500830B95 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D35B07B1BDEE0A500830B95 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3D35B07F1BDEE0A500830B95 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D35B0801BDEE0A500830B95 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3D35B0831BDEE0A500830B95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3D35B0841BDEE0A500830B95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3D35B0861BDEE0A500830B95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Places/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Places/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wizzo.Places;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3D35B0871BDEE0A500830B95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Places/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = Places/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wizzo.Places;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3D35B06C1BDEE0A500830B95 /* Build configuration list for PBXProject "Places" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D35B0831BDEE0A500830B95 /* Debug */,
+				3D35B0841BDEE0A500830B95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D35B0851BDEE0A500830B95 /* Build configuration list for PBXNativeTarget "Places" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D35B0861BDEE0A500830B95 /* Debug */,
+				3D35B0871BDEE0A500830B95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3D35B0691BDEE0A500830B95 /* Project object */;
+}
