@@ -33,6 +33,8 @@ class AddPlaceViewController: UIViewController {
 
                 }
             })
+            
+            self.titleTextField.becomeFirstResponder()
         }
     }
     
