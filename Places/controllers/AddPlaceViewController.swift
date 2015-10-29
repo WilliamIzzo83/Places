@@ -34,8 +34,10 @@ class AddPlaceViewController: UIViewController {
                 }
             })
             
-            self.titleTextField.becomeFirstResponder()
+            
         }
+        
+        self.titleTextField.becomeFirstResponder()
     }
     
     @IBAction func didEndEditing(textField:UITextField) {

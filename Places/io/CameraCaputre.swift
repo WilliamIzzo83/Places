@@ -106,7 +106,10 @@ class CameraCapture  {
         }
         
         self.currentSession?.activateSession({ (session) -> Void in
-            didBegin(session: session)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                didBegin(session: session)
+            })
+            
         })
     }
     
