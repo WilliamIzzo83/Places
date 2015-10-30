@@ -36,7 +36,15 @@ class PlacesListViewController : UITableViewController {
             if let placeTVR = cell as? PlaceTVR {
                 let place = self.availablePlaces[indexPath.row]
                 placeTVR.titleLabel.text = place.title
-                placeTVR.addressLabel.text = ""
+                placeTVR.addressLabel.text = "address coming soon.\namultilined of course"
+                let imageUID = place.imageUID
+                dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
+                    if let imageData = readDataInLibraryPath(imageUID) {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            placeTVR.placeImage.image = UIImage(data: imageData)
+                        })
+                    }
+                }
             }
             
             return cell

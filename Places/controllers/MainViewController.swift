@@ -14,11 +14,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         self.addButton.layer.cornerRadius = 60.0 / 2.0
-        self.addButton.layer.borderColor = UIColor.blackColor().CGColor
-        self.addButton.layer.borderWidth = 1.0
+        self.addButton.layer.borderColor = UIColor.whiteColor().CGColor
+        self.addButton.layer.borderWidth = 2.0
     }
     
     @IBAction func done(segue:UIStoryboardSegue){
-        
+
     }
 }

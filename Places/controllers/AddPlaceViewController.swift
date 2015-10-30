@@ -16,22 +16,21 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var placeTitleOverlay : UIView!
     @IBOutlet weak var addButtonBkg: UIView!
     @IBOutlet weak var addButtonInnerView: UIView!
+    private var forceResignResponder = false
     private var cameraCapture : CameraCapture!
     
     override func viewDidLoad() {
+        self.forceResignResponder = false
+        self.titleTextField.becomeFirstResponder()
+        self.addButtonBkg.layer.cornerRadius = 40.0
+        self.addButtonInnerView.layer.cornerRadius = 35
+        
+        self.addButtonInnerView.layer.borderWidth = 3
+        self.addButtonInnerView.layer.borderColor = UIColor.blackColor().CGColor
+        
         CameraCaptureBuilder.build { (session) -> Void in
-            
-            self.titleTextField.becomeFirstResponder()
-            
-            self.addButtonBkg.layer.cornerRadius = 40.0
-            self.addButtonInnerView.layer.cornerRadius = 35
-            
-            self.addButtonInnerView.layer.borderWidth = 3
-            self.addButtonInnerView.layer.borderColor = UIColor.blackColor().CGColor
-            
             self.cameraCapture = session
             self.cameraCapture.beginSession(CameraCapture.CameraCaptureSessionType.BackCamera, didBegin:{ (frontSession) -> Void in
-                
                 if let sessionPreview = frontSession?.previewLayer() {
                     
                     let bounds = self.view.layer.bounds;
@@ -68,6 +67,11 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
     }
    
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        
+        guard self.forceResignResponder == false else {
+            return true
+        }
+        
         if let text = textField.text {
             guard text.characters.count > 0 else {
                 return false
@@ -76,8 +80,10 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
         }
         return false
     }
-
-    
+    override func viewWillDisappear(animated: Bool) {
+        self.forceResignResponder = true
+        self.titleTextField.resignFirstResponder()
+    }
     @IBAction func addTouchDown(sender: AnyObject) {
         self.addButtonInnerView.backgroundColor = UIColor.grayColor()
     }
