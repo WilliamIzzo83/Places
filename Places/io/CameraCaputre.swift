@@ -11,7 +11,7 @@ import AVFoundation
 import UIKit
 
 typealias cameraCaptureSessionDidStart = (session:CameraCaptureSession)->Void
-typealias cameraCaptureDidCaptureStillImage = (image:UIImage?, error:NSError?) -> Void
+typealias cameraCaptureDidCaptureStillImage = (imageData:NSData?, error:NSError?) -> Void
 
 class CameraCaptureSession {
 
@@ -19,7 +19,7 @@ class CameraCaptureSession {
     
     func captureFrame(didCapture:cameraCaptureDidCaptureStillImage) {
         guard self.session.running == true else {
-            didCapture(image: nil, error: nil)
+            didCapture(imageData: nil, error: nil)
             return
         }
         
@@ -29,13 +29,13 @@ class CameraCaptureSession {
         stillOutput?.captureStillImageAsynchronouslyFromConnection(connection,
             completionHandler: { (samplerBuffer, error) -> Void in
                 guard error == nil else {
-                    didCapture(image:nil, error:error)
+                    didCapture(imageData:nil, error:error)
                     return
                 }
                 
                 let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(samplerBuffer)
                 
-                didCapture(image: UIImage(data: imageData), error: nil)
+                didCapture(imageData: imageData, error: nil)
         })
     }
     
@@ -81,7 +81,7 @@ class CameraCapture  {
     private var frontSession : CameraCaptureSession?
     private var backSession : CameraCaptureSession?
     
-    private weak var currentSession : CameraCaptureSession? = nil
+    private(set) weak var currentSession : CameraCaptureSession? = nil
     
     private init(frontCameraSession:CameraCaptureSession?, backCameraSession:CameraCaptureSession?){
         self.frontSession = frontCameraSession
