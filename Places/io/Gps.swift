@@ -9,14 +9,36 @@
 import UIKit
 import CoreLocation
 
+typealias requestLocationReady = (location:CLLocation) -> Void
 
-private class GpsSession : NSObject, CLLocationManagerDelegate {
-    private lazy var locationManager : CLLocationManager!
+class GpsSingleLocationSession : NSObject, CLLocationManagerDelegate {
+    private lazy var locationManager : CLLocationManager = CLLocationManager()
+    public var desiredAccuracy : CLLocationAccuracy = kCLLocationAccuracyHundredMeters
+    public var distanceFilter : CLLocationDistance = 10.0
+    private var requestListener : requestLocationReady?
+    private init() {
+
+    }
     
+    private init(requestLocationListener:requestLocationReady) {
+        self.requestLocationListener = requestLocationListener
+    }
+    
+    public requestLocation() {
+
+    }
+}
+
+class GpsUpdateLocationSession : NSObject, CLLocationManagerDelegate {
+    private lazy var locationManager : CLLocationManager!
 }
 
 class Gps {
-    static func beginSession(authStatus : CLAuthorizationStatus) {
-        
+    static func singleLocationSession() -> GpsSingleLocationSession? {
+        return nil
+    }
+    
+    static func updateLocationSession(requiredAuthorization:CLAuthorizationStatus) -> GpsUpdateLocationSession? {
+        return nil
     }
 }
