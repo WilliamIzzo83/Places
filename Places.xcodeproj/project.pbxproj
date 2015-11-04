@@ -23,6 +23,7 @@
 		3D35B0A21BE14A5B00830B95 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D35B0A11BE14A5B00830B95 /* AVFoundation.framework */; };
 		3D35B0A61BE14B5400830B95 /* CameraCaputre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D35B0A51BE14B5400830B95 /* CameraCaputre.swift */; };
 		3D3EEBAB1BE2B651003CF14D /* FastFileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3EEBAA1BE2B651003CF14D /* FastFileIO.swift */; };
+		3DE40D1B1BEA33AF003FC46D /* Gps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE40D1A1BEA33AF003FC46D /* Gps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +58,7 @@
 		3D35B0A11BE14A5B00830B95 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3D35B0A51BE14B5400830B95 /* CameraCaputre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraCaputre.swift; path = io/CameraCaputre.swift; sourceTree = "<group>"; };
 		3D3EEBAA1BE2B651003CF14D /* FastFileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FastFileIO.swift; path = io/FastFileIO.swift; sourceTree = "<group>"; };
+		3DE40D1A1BEA33AF003FC46D /* Gps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gps.swift; path = io/Gps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			children = (
 				3D35B0A51BE14B5400830B95 /* CameraCaputre.swift */,
 				3D3EEBAA1BE2B651003CF14D /* FastFileIO.swift */,
+				3DE40D1A1BEA33AF003FC46D /* Gps.swift */,
 			);
 			name = io;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D35B0A61BE14B5400830B95 /* CameraCaputre.swift in Sources */,
+				3DE40D1B1BEA33AF003FC46D /* Gps.swift in Sources */,
 				3D3EEBAB1BE2B651003CF14D /* FastFileIO.swift in Sources */,
 				3D35B0A01BE02E2A00830B95 /* PlaceTVR.swift in Sources */,
 				3D35B09B1BE023B000830B95 /* AddPlaceViewController.swift in Sources */,
