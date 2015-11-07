@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import RealmSwift
 import AVFoundation
-
+import CoreLocation
 class AddPlaceViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var titleTextField : UITextField!
     @IBOutlet var placeTitleOverlay : UIView!
@@ -18,7 +18,9 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var addButtonInnerView: UIView!
     private var forceResignResponder = false
     private var cameraCapture : CameraCapture!
+    private var gpsSession : GpsSingleLocationSession?
     
+    @IBOutlet weak var addressTextField: UITextField!
     override func viewDidLoad() {
         self.forceResignResponder = false
         self.titleTextField.becomeFirstResponder()
@@ -47,6 +49,17 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
         
         }
         
+        Gps.singleLocationSession(.WhenInUse) { (session) -> Void in
+            self.gpsSession = session
+            self.gpsSession?.getLocation({ (sender, location) -> Void in
+                let geocoder = CLGeocoder()
+                geocoder.reverseGeocodeLocation(location, completionHandler: { (placeMarks, error) -> Void in
+                    if let placemark = placeMarks?.first {
+                        self.addressTextField.text = placemark.thoroughfare
+                    }
+                })
+            })
+        }
     }
     
     @IBAction func porcodio(textfield:UITextField) {
@@ -106,35 +119,59 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
     @IBAction func addAction(sender:UIButton){
         self.addButtonInnerView.backgroundColor = UIColor.whiteColor()
         
+        let place = Place()
+        
+        if let title = self.titleTextField.text {
+            place.title = title
+        }
+        
+        self.gpsSession?.getLocation({ (sender, location) -> Void in
+            place.latitude = location.coordinate.latitude
+            place.longitude = location.coordinate.longitude
+            
+            self.tryWritePlace(place)
+        })
+        
         self.cameraCapture.currentSession?.captureFrame({ (imageData, error) -> Void in
             if imageData != nil {
                 let imageUID = NSUUID().UUIDString
                 writeDataInLibraryPath(imageData!, filename: imageUID)
                 
-                let place = Place()
-                var canAdd = false;
-                if let title = self.titleTextField.text {
-                    place.title = title
-                    canAdd = true;
-                }
-                
-                guard canAdd == true else {
-                    // TODO : show alert
-                    print("Cannot add item with no title")
-                    return
-                }
-                
                 place.imageUID = imageUID
                 
-                let realm = try! Realm()
-                try! realm.write({ () -> Void in
-                    realm.add(place)
-                    self.performSegueWithIdentifier("unwind-add-place", sender: self)
-                })
+                self.tryWritePlace(place)
             }
             
         })
+    }
+    
+    private func tryWritePlace(place:Place) {
+        var canAdd = true
         
+        if place.title == "" {
+            canAdd = false
+        }
         
+        if place.longitude == 0 || place.latitude == 0 {
+            canAdd = false
+        }
+        
+        if place.imageUID == "" {
+            canAdd = false
+        }
+        
+        if let address = self.addressTextField.text {
+            place.address = address
+        } else {
+            canAdd = false
+        }
+        
+        if canAdd {
+            let realm = try! Realm()
+            try! realm.write({ () -> Void in
+                realm.add(place)
+                self.performSegueWithIdentifier("unwind-add-place", sender: self)
+            })
+        }
     }
 }

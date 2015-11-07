@@ -23,6 +23,7 @@
 		3D35B0A21BE14A5B00830B95 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D35B0A11BE14A5B00830B95 /* AVFoundation.framework */; };
 		3D35B0A61BE14B5400830B95 /* CameraCaputre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D35B0A51BE14B5400830B95 /* CameraCaputre.swift */; };
 		3D3EEBAB1BE2B651003CF14D /* FastFileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3EEBAA1BE2B651003CF14D /* FastFileIO.swift */; };
+		3DA59A851BEDFEDB002B5B01 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA59A841BEDFEDB002B5B01 /* CoreLocation.framework */; };
 		3DE40D1B1BEA33AF003FC46D /* Gps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE40D1A1BEA33AF003FC46D /* Gps.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		3D35B0A11BE14A5B00830B95 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3D35B0A51BE14B5400830B95 /* CameraCaputre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraCaputre.swift; path = io/CameraCaputre.swift; sourceTree = "<group>"; };
 		3D3EEBAA1BE2B651003CF14D /* FastFileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FastFileIO.swift; path = io/FastFileIO.swift; sourceTree = "<group>"; };
+		3DA59A841BEDFEDB002B5B01 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3DE40D1A1BEA33AF003FC46D /* Gps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gps.swift; path = io/Gps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DA59A851BEDFEDB002B5B01 /* CoreLocation.framework in Frameworks */,
 				3D35B0A21BE14A5B00830B95 /* AVFoundation.framework in Frameworks */,
 				3D35B0901BE0171600830B95 /* libc++.tbd in Frameworks */,
 				3D35B0921BE0172100830B95 /* RealmSwift.framework in Frameworks */,
@@ -137,6 +140,7 @@
 		3D35B0A31BE14A6900830B95 /* libs_frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DA59A841BEDFEDB002B5B01 /* CoreLocation.framework */,
 				3D35B0A11BE14A5B00830B95 /* AVFoundation.framework */,
 				3D35B08F1BE0171600830B95 /* libc++.tbd */,
 				3D35B0911BE0172100830B95 /* RealmSwift.framework */,
@@ -189,6 +193,7 @@
 				TargetAttributes = {
 					3D35B0701BDEE0A500830B95 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 27ZNHEEFXW;
 					};
 				};
 			};
@@ -363,6 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Places/Carthage/Build/iOS",
@@ -379,6 +385,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Places/Carthage/Build/iOS",

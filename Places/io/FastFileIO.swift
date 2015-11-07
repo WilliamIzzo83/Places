@@ -9,8 +9,6 @@
 import Foundation
 
 func writeDataInLibraryPath(data:NSData, filename:String) -> Bool {
-    
-    
     if let appDir = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true).first {
         let appLibUrl = NSURL(fileURLWithPath: appDir, isDirectory: true)
         let fullPathUrl = appLibUrl.URLByAppendingPathComponent(filename)
@@ -22,8 +20,6 @@ func writeDataInLibraryPath(data:NSData, filename:String) -> Bool {
 }
 
 func readDataInLibraryPath(filename:String) -> NSData? {
-    
-    
     if let appDir = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true).first {
         let appLibUrl = NSURL(fileURLWithPath: appDir, isDirectory: true)
         let fullPathUrl = appLibUrl.URLByAppendingPathComponent(filename)

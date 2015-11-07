@@ -37,7 +37,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ZIN-1D-xAZ" kind="modal" id="znf-kL-ajV"/>
+                                    <segue destination="5Es-kH-OkN" kind="modal" id="znf-kL-ajV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -96,8 +96,19 @@
                                             <constraint firstAttribute="height" constant="1" id="gom-e1-YVD"/>
                                         </constraints>
                                     </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="searching address..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cpp-15-FIK">
+                                        <rect key="frame" x="16" y="106" width="288" height="26"/>
+                                        <animations/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <action selector="porcodio:" destination="ZIN-1D-xAZ" eventType="editingDidEndOnExit" id="oco-11-1g0"/>
+                                            <outlet property="delegate" destination="ZIN-1D-xAZ" id="IuX-I6-FYy"/>
+                                        </connections>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6U2-GG-zIH">
-                                        <rect key="frame" x="16" y="94" width="79" height="36"/>
+                                        <rect key="frame" x="16" y="151" width="79" height="36"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="get Back">
@@ -108,28 +119,42 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hi4-T9-7EN">
-                                        <rect key="frame" x="16" y="130" width="79" height="1"/>
+                                        <rect key="frame" x="16" y="187" width="79" height="1"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Zkq-HS-avD"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJc-XA-aSH" userLabel="Underline view">
+                                        <rect key="frame" x="16" y="140" width="288" height="1"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="do5-tU-PVf"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <animations/>
-                                <color key="backgroundColor" red="0.18586848676204681" green="0.23891744017601013" blue="0.32097876071929932" alpha="0.81528214928057552" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.20999999999999999" alpha="0.81528214928057552" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Cpp-15-FIK" secondAttribute="trailing" constant="8" id="5QI-a2-lFy"/>
                                     <constraint firstItem="ahJ-0h-2lm" firstAttribute="top" secondItem="nGJ-HO-C4N" secondAttribute="topMargin" constant="35" id="Cls-xP-SGX"/>
                                     <constraint firstItem="Hi4-T9-7EN" firstAttribute="leading" secondItem="6U2-GG-zIH" secondAttribute="leading" id="GyJ-9S-da1"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="ahJ-0h-2lm" secondAttribute="trailing" constant="8" id="IHB-nB-Hhr"/>
-                                    <constraint firstItem="6U2-GG-zIH" firstAttribute="top" secondItem="WA2-YD-ovS" secondAttribute="bottom" constant="8" id="L89-X8-hlV"/>
                                     <constraint firstItem="Hi4-T9-7EN" firstAttribute="top" secondItem="6U2-GG-zIH" secondAttribute="bottom" id="Ltw-gz-u0S"/>
                                     <constraint firstItem="ahJ-0h-2lm" firstAttribute="leading" secondItem="nGJ-HO-C4N" secondAttribute="leadingMargin" constant="8" id="Mjd-3r-Alf"/>
+                                    <constraint firstItem="6U2-GG-zIH" firstAttribute="top" secondItem="bJc-XA-aSH" secondAttribute="bottom" constant="10" id="Mqw-CK-kOi"/>
+                                    <constraint firstItem="bJc-XA-aSH" firstAttribute="leading" secondItem="nGJ-HO-C4N" secondAttribute="leadingMargin" constant="8" id="P8Q-6k-ITr"/>
+                                    <constraint firstItem="Cpp-15-FIK" firstAttribute="top" secondItem="WA2-YD-ovS" secondAttribute="bottom" constant="20" id="WBf-s9-ZzT"/>
                                     <constraint firstItem="Hi4-T9-7EN" firstAttribute="trailing" secondItem="6U2-GG-zIH" secondAttribute="trailing" id="clk-ad-V4v"/>
                                     <constraint firstItem="WA2-YD-ovS" firstAttribute="top" secondItem="ahJ-0h-2lm" secondAttribute="bottom" constant="8" id="guq-vF-88p"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="WA2-YD-ovS" secondAttribute="trailing" constant="8" id="it3-nH-gaE"/>
+                                    <constraint firstItem="bJc-XA-aSH" firstAttribute="top" secondItem="Cpp-15-FIK" secondAttribute="bottom" constant="8" id="kGs-z2-ncE"/>
                                     <constraint firstItem="WA2-YD-ovS" firstAttribute="leading" secondItem="nGJ-HO-C4N" secondAttribute="leadingMargin" constant="8" id="l0H-X8-hNA"/>
                                     <constraint firstItem="6U2-GG-zIH" firstAttribute="leading" secondItem="nGJ-HO-C4N" secondAttribute="leading" constant="16" id="o6Z-s5-4xZ"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="bJc-XA-aSH" secondAttribute="trailing" constant="8" id="oKc-4N-rZ8"/>
+                                    <constraint firstItem="Cpp-15-FIK" firstAttribute="leading" secondItem="nGJ-HO-C4N" secondAttribute="leadingMargin" constant="8" id="xDk-WC-ZcS"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZy-Ws-uqz" userLabel="AddButton">
@@ -181,9 +206,11 @@
                             <outletCollection property="gestureRecognizers" destination="zJE-iW-JgV" appends="YES" id="3Dn-H1-GmO"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="yYN-xz-Anu"/>
                     <connections>
                         <outlet property="addButtonBkg" destination="sZy-Ws-uqz" id="j4L-Ze-kLx"/>
                         <outlet property="addButtonInnerView" destination="ska-EV-Akj" id="SW6-lJ-WOh"/>
+                        <outlet property="addressTextField" destination="Cpp-15-FIK" id="OGz-1j-dRc"/>
                         <outlet property="placeTitleOverlay" destination="nGJ-HO-C4N" id="ZNt-2R-ZyS"/>
                         <outlet property="titleTextField" destination="ahJ-0h-2lm" id="5Eb-Lm-loR"/>
                     </connections>
@@ -195,7 +222,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="215" y="551"/>
+            <point key="canvasLocation" x="747" y="551"/>
         </scene>
         <!--Places List Controller-->
         <scene sceneID="4f2-Pm-sdS">
@@ -218,7 +245,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                             <animations/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVK-IE-3lT">
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVK-IE-3lT">
                                             <rect key="frame" x="0.0" y="119" width="320" height="65"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdasdads" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jr-jS-IT3">
@@ -317,6 +344,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XSA-oi-3nV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-317" y="-232"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dvy-D0-42O">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="5Es-kH-OkN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3L7-xX-Ku0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Hym-18-hwN">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="ZIN-1D-xAZ" kind="relationship" relationship="rootViewController" id="Qhh-CP-14I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MTg-lK-2f6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="215" y="551"/>
         </scene>
     </scenes>
 </document>
