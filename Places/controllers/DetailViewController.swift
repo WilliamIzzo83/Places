@@ -32,4 +32,8 @@ class DetailViewController : UIViewController {
         self.titleLabel.text = self.place.title
         self.addressLabel.text = self.place.longAddress
     }
+    
+    @IBAction func cancelButtonAction() {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 }

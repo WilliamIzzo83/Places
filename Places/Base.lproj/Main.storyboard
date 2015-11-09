@@ -347,14 +347,17 @@
                                 <state key="normal" title="X">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonAction" destination="rcb-5r-63O" eventType="touchUpInside" id="w3n-UR-3cN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZbQ-Ca-4XI" firstAttribute="top" secondItem="u3d-g3-fXg" secondAttribute="bottom" constant="8" id="70A-US-K4B"/>
-                            <constraint firstItem="miz-0e-Ltb" firstAttribute="top" secondItem="rmG-Ea-xJ9" secondAttribute="bottom" id="Mjn-H1-55d"/>
                             <constraint firstItem="wwq-HF-dkH" firstAttribute="top" secondItem="rmG-Ea-xJ9" secondAttribute="bottom" constant="20" id="QSY-vJ-zAf"/>
+                            <constraint firstAttribute="topMargin" secondItem="miz-0e-Ltb" secondAttribute="top" id="Udp-MF-ERg"/>
                             <constraint firstAttribute="bottomMargin" secondItem="miz-0e-Ltb" secondAttribute="bottom" id="cNn-ZX-a6P"/>
                             <constraint firstItem="ZbQ-Ca-4XI" firstAttribute="leading" secondItem="HKA-61-Qvk" secondAttribute="leadingMargin" id="cvh-lM-4lL"/>
                             <constraint firstItem="ZbQ-Ca-4XI" firstAttribute="bottom" secondItem="miz-0e-Ltb" secondAttribute="bottom" constant="-10" id="dc4-Em-8oH"/>
