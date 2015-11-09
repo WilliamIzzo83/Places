@@ -23,6 +23,10 @@
 		3D35B0A21BE14A5B00830B95 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D35B0A11BE14A5B00830B95 /* AVFoundation.framework */; };
 		3D35B0A61BE14B5400830B95 /* CameraCaputre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D35B0A51BE14B5400830B95 /* CameraCaputre.swift */; };
 		3D3EEBAB1BE2B651003CF14D /* FastFileIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3EEBAA1BE2B651003CF14D /* FastFileIO.swift */; };
+		3D78C47F1BEE6189006A63B0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78C47E1BEE6189006A63B0 /* DetailViewController.swift */; };
+		3D96A9FA1BEEA87000C4ED49 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D96A9F91BEEA87000C4ED49 /* AddressBook.framework */; };
+		3D96A9FC1BEEA8D300C4ED49 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D96A9FB1BEEA8D300C4ED49 /* AddressBookUI.framework */; };
+		3D96A9FE1BEEA99900C4ED49 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D96A9FD1BEEA99900C4ED49 /* Contacts.framework */; };
 		3DA59A851BEDFEDB002B5B01 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA59A841BEDFEDB002B5B01 /* CoreLocation.framework */; };
 		3DE40D1B1BEA33AF003FC46D /* Gps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE40D1A1BEA33AF003FC46D /* Gps.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +63,10 @@
 		3D35B0A11BE14A5B00830B95 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3D35B0A51BE14B5400830B95 /* CameraCaputre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraCaputre.swift; path = io/CameraCaputre.swift; sourceTree = "<group>"; };
 		3D3EEBAA1BE2B651003CF14D /* FastFileIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FastFileIO.swift; path = io/FastFileIO.swift; sourceTree = "<group>"; };
+		3D78C47E1BEE6189006A63B0 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = controllers/DetailViewController.swift; sourceTree = "<group>"; };
+		3D96A9F91BEEA87000C4ED49 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		3D96A9FB1BEEA8D300C4ED49 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		3D96A9FD1BEEA99900C4ED49 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		3DA59A841BEDFEDB002B5B01 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3DE40D1A1BEA33AF003FC46D /* Gps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gps.swift; path = io/Gps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D96A9FE1BEEA99900C4ED49 /* Contacts.framework in Frameworks */,
+				3D96A9FC1BEEA8D300C4ED49 /* AddressBookUI.framework in Frameworks */,
+				3D96A9FA1BEEA87000C4ED49 /* AddressBook.framework in Frameworks */,
 				3DA59A851BEDFEDB002B5B01 /* CoreLocation.framework in Frameworks */,
 				3D35B0A21BE14A5B00830B95 /* AVFoundation.framework in Frameworks */,
 				3D35B0901BE0171600830B95 /* libc++.tbd in Frameworks */,
@@ -81,6 +92,7 @@
 		3D35B0681BDEE0A500830B95 = {
 			isa = PBXGroup;
 			children = (
+				3D96A9FD1BEEA99900C4ED49 /* Contacts.framework */,
 				3D35B0A31BE14A6900830B95 /* libs_frameworks */,
 				3D35B0731BDEE0A500830B95 /* Places */,
 				3D35B0721BDEE0A500830B95 /* Products */,
@@ -125,6 +137,7 @@
 				3D35B0981BE01F2900830B95 /* MainViewController.swift */,
 				3D35B09A1BE023B000830B95 /* AddPlaceViewController.swift */,
 				3D35B09C1BE02AA900830B95 /* PlacesListViewController.swift */,
+				3D78C47E1BEE6189006A63B0 /* DetailViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -140,6 +153,8 @@
 		3D35B0A31BE14A6900830B95 /* libs_frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D96A9FB1BEEA8D300C4ED49 /* AddressBookUI.framework */,
+				3D96A9F91BEEA87000C4ED49 /* AddressBook.framework */,
 				3DA59A841BEDFEDB002B5B01 /* CoreLocation.framework */,
 				3D35B0A11BE14A5B00830B95 /* AVFoundation.framework */,
 				3D35B08F1BE0171600830B95 /* libc++.tbd */,
@@ -256,6 +271,7 @@
 				3D35B09B1BE023B000830B95 /* AddPlaceViewController.swift in Sources */,
 				3D35B0991BE01F2900830B95 /* MainViewController.swift in Sources */,
 				3D35B0751BDEE0A500830B95 /* AppDelegate.swift in Sources */,
+				3D78C47F1BEE6189006A63B0 /* DetailViewController.swift in Sources */,
 				3D35B09D1BE02AA900830B95 /* PlacesListViewController.swift in Sources */,
 				3D35B08D1BE014F100830B95 /* Place.swift in Sources */,
 			);
@@ -378,6 +394,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wizzo.Places;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -395,6 +412,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wizzo.Places;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -11,6 +11,114 @@ import UIKit
 import RealmSwift
 import AVFoundation
 import CoreLocation
+import AddressBookUI
+import Contacts
+private class PlaceBuilder {
+    typealias didBuildPlaceListener = (place:Place) -> Void
+    private var didBuildPlace : didBuildPlaceListener!
+    private var place = Place()
+    
+    init (didBuildPlace:didBuildPlaceListener) {
+        self.didBuildPlace = didBuildPlace
+    }
+    
+    var title : String {
+        get {
+            return place.title
+        }
+        set(value) {
+            place.title = value
+            self.tryNotifyPlaceIsBuilt()
+        }
+    }
+    
+    var location : CLLocationCoordinate2D {
+        get {
+            return CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
+        }
+        
+        set(value) {
+            place.latitude = value.latitude
+            place.longitude = value.longitude
+            self.tryNotifyPlaceIsBuilt()
+        }
+    }
+    
+    var address : NSDictionary? {
+        get {
+            guard place.addressData != nil else {
+                return nil
+            }
+            
+            let dictionary = NSKeyedUnarchiver.unarchiveObjectWithData(place.addressData!) as! NSDictionary
+            return dictionary
+        }
+        
+        set(value) {
+            if let dictionary = value {
+                place.addressData = NSKeyedArchiver.archivedDataWithRootObject(dictionary)
+                
+                
+                // Thoroughfare, ZIP City, SubAdministrativeArea, Country
+                var fullAddress = String()
+                if let thoroughfare  = dictionary["Street"] as? String {
+                    fullAddress += thoroughfare
+                }
+                
+                if let zip  = dictionary["ZIP"] as? String {
+                    fullAddress += ", " + zip
+                }
+                
+                if let subAdArea = dictionary["SubAdministrativeArea"] as? String {
+                    fullAddress += " " + subAdArea
+                }
+                
+                if let country = dictionary["Country"] as? String {
+                    fullAddress += ", " + country
+                }
+                
+                place.longAddress = fullAddress
+                place.shortAddress = dictionary["Street"] as? String
+                
+                self.tryNotifyPlaceIsBuilt()
+            }
+        }
+    }
+    
+    var imageUID : String {
+        get {
+            return self.place.imageUID
+        }
+        
+        set(value) {
+            self.place.imageUID = value
+            self.tryNotifyPlaceIsBuilt()
+            
+        }
+    }
+    
+    private func tryNotifyPlaceIsBuilt() {
+        guard place.title != "" else {
+            return
+        }
+        
+        guard place.addressData != nil else {
+            return
+        }
+        
+        guard place.latitude != 0.0 && place.longitude != 0.0 else {
+            return
+        }
+        
+        guard place.imageUID != "" else {
+            return
+        }
+        
+        self.didBuildPlace(place:self.place)
+    }
+    
+}
+
 class AddPlaceViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var titleTextField : UITextField!
     @IBOutlet var placeTitleOverlay : UIView!
@@ -19,6 +127,7 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
     private var forceResignResponder = false
     private var cameraCapture : CameraCapture!
     private var gpsSession : GpsSingleLocationSession?
+    private var placeBuilder  : PlaceBuilder!
     
     @IBOutlet weak var addressTextField: UITextField!
     override func viewDidLoad() {
@@ -29,6 +138,16 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
         
         self.addButtonInnerView.layer.borderWidth = 3
         self.addButtonInnerView.layer.borderColor = UIColor.blackColor().CGColor
+        
+        self.placeBuilder = PlaceBuilder(didBuildPlace: { (place) -> Void in
+            // save & return
+            let realm = try! Realm()
+            try! realm.write({ () -> Void in
+                realm.add(place)
+                self.performSegueWithIdentifier("unwind-add-place", sender: self)
+            })
+            
+        })
         
         CameraCaptureBuilder.build { (session) -> Void in
             self.cameraCapture = session
@@ -43,7 +162,6 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
                     sessionPreview.position = CGPoint(x: CGRectGetMidX(bounds), y: CGRectGetMidY(bounds))
                     
                     self.view.layer.insertSublayer(sessionPreview, atIndex: 0)
-
                 }
             })
         
@@ -51,11 +169,15 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
         
         Gps.singleLocationSession(.WhenInUse) { (session) -> Void in
             self.gpsSession = session
+            self.gpsSession?.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+            self.gpsSession?.distanceFilter = 2
             self.gpsSession?.getLocation({ (sender, location) -> Void in
+                self.placeBuilder.location = location.coordinate
                 let geocoder = CLGeocoder()
                 geocoder.reverseGeocodeLocation(location, completionHandler: { (placeMarks, error) -> Void in
                     if let placemark = placeMarks?.first {
-                        self.addressTextField.text = placemark.thoroughfare
+                        self.addressTextField.text = placemark.addressDictionary?["Street"] as? String
+                        self.placeBuilder.address = placemark.addressDictionary
                     }
                 })
             })
@@ -80,11 +202,10 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
     }
    
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        
         guard self.forceResignResponder == false else {
             return true
         }
-        
+
         if let text = textField.text {
             guard text.characters.count > 0 else {
                 return false
@@ -93,16 +214,20 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
         }
         return false
     }
+    
     override func viewWillDisappear(animated: Bool) {
         self.forceResignResponder = true
         self.titleTextField.resignFirstResponder()
     }
+    
     @IBAction func addTouchDown(sender: AnyObject) {
         self.addButtonInnerView.backgroundColor = UIColor.grayColor()
     }
+    
     @IBAction func addTouchExit(sender: AnyObject) {
         self.addButtonInnerView.backgroundColor = UIColor.whiteColor()
     }
+    
     @IBAction func reinputTitle(sender: AnyObject) {
         UIView.animateWithDuration(
             0.4,
@@ -119,59 +244,17 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
     @IBAction func addAction(sender:UIButton){
         self.addButtonInnerView.backgroundColor = UIColor.whiteColor()
         
-        let place = Place()
-        
         if let title = self.titleTextField.text {
-            place.title = title
+            self.placeBuilder.title = title
         }
-        
-        self.gpsSession?.getLocation({ (sender, location) -> Void in
-            place.latitude = location.coordinate.latitude
-            place.longitude = location.coordinate.longitude
-            
-            self.tryWritePlace(place)
-        })
         
         self.cameraCapture.currentSession?.captureFrame({ (imageData, error) -> Void in
             if imageData != nil {
                 let imageUID = NSUUID().UUIDString
                 writeDataInLibraryPath(imageData!, filename: imageUID)
-                
-                place.imageUID = imageUID
-                
-                self.tryWritePlace(place)
-            }
-            
-        })
-    }
     
-    private func tryWritePlace(place:Place) {
-        var canAdd = true
-        
-        if place.title == "" {
-            canAdd = false
-        }
-        
-        if place.longitude == 0 || place.latitude == 0 {
-            canAdd = false
-        }
-        
-        if place.imageUID == "" {
-            canAdd = false
-        }
-        
-        if let address = self.addressTextField.text {
-            place.address = address
-        } else {
-            canAdd = false
-        }
-        
-        if canAdd {
-            let realm = try! Realm()
-            try! realm.write({ () -> Void in
-                realm.add(place)
-                self.performSegueWithIdentifier("unwind-add-place", sender: self)
-            })
-        }
+                self.placeBuilder.imageUID = imageUID
+            }
+        })
     }
 }

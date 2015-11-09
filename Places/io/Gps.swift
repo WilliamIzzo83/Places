@@ -114,6 +114,26 @@ class GpsSingleLocationSession {
         
         self.reactiveLocationManager.requestLocation()
     }
+    
+    var distanceFilter : CLLocationDistance {
+        get {
+            return self.reactiveLocationManager.distanceFilter
+        }
+        
+        set(value) {
+            self.reactiveLocationManager.distanceFilter = value
+        }
+    }
+    
+    var desiredAccuracy : CLLocationAccuracy {
+        get {
+            return self.reactiveLocationManager.desiredAccuracy
+        }
+        
+        set(value) {
+            self.reactiveLocationManager.desiredAccuracy = value
+        }
+    }
 }
 
 

@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
         self.addButton.layer.borderColor = UIColor.whiteColor().CGColor
         self.addButton.layer.borderWidth = 2.0
         
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         
     }
     

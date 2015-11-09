@@ -15,8 +15,8 @@ class PlacesListViewController : UITableViewController {
     var availablePlaces : Results<Place>!
 
     override func viewWillAppear(animated: Bool) {
+
         let realm = try! Realm()
-        
         self.availablePlaces = realm.objects(Place)
         self.tableView.reloadData()
     }
@@ -42,7 +42,7 @@ class PlacesListViewController : UITableViewController {
             if let placeTVR = cell as? PlaceTVR {
                 let place = self.availablePlaces[indexPath.row]
                 placeTVR.titleLabel.text = place.title
-                placeTVR.addressLabel.text = place.address
+                placeTVR.addressLabel.text = place.longAddress
                 let imageUID = place.imageUID
                 dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
                     if let imageData = readDataInLibraryPath(imageUID) {
@@ -54,5 +54,14 @@ class PlacesListViewController : UITableViewController {
             }
             
             return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detail_segue" {
+            let detailController = segue.destinationViewController as! DetailViewController
+            if let selectedRowIPath = self.tableView.indexPathForSelectedRow {
+                detailController.place = self.availablePlaces[selectedRowIPath.row]
+            }
+        }
     }
 }

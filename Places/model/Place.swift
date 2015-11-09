@@ -17,4 +17,7 @@ class Place: Object {
     dynamic var rating = 0
     dynamic var latitude = 0.0
     dynamic var longitude = 0.0
+    dynamic var shortAddress : String?
+    dynamic var longAddress : String?
+    dynamic var addressData : NSData?
 }

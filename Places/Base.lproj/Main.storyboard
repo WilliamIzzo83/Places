@@ -245,18 +245,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                             <animations/>
                                         </imageView>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVK-IE-3lT">
-                                            <rect key="frame" x="0.0" y="119" width="320" height="65"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVK-IE-3lT">
+                                            <rect key="frame" x="0.0" y="120" width="320" height="64"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdasdads" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jr-jS-IT3">
-                                                    <rect key="frame" x="8" y="29" width="304" height="20"/>
+                                                    <rect key="frame" x="8" y="28.5" width="304" height="19.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWo-Sa-Omm">
-                                                    <rect key="frame" x="8" y="8" width="304" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="304" height="20.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="calibratedRGB"/>
@@ -292,7 +292,7 @@
                                     <outlet property="addressLabel" destination="3jr-jS-IT3" id="cWG-wG-6bf"/>
                                     <outlet property="placeImage" destination="SPb-za-9lK" id="XAJ-9T-0cG"/>
                                     <outlet property="titleLabel" destination="RWo-Sa-Omm" id="jRU-Gr-c5S"/>
-                                    <segue destination="rcb-5r-63O" kind="push" id="S99-PM-uD4"/>
+                                    <segue destination="rcb-5r-63O" kind="push" identifier="detail_segue" id="S99-PM-uD4"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -309,7 +309,7 @@
         <!--Detail Controller-->
         <scene sceneID="ZSe-Zi-LSw">
             <objects>
-                <viewController id="rcb-5r-63O" userLabel="Detail Controller" sceneMemberID="viewController">
+                <viewController id="rcb-5r-63O" userLabel="Detail Controller" customClass="DetailViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rmG-Ea-xJ9"/>
                         <viewControllerLayoutGuide type="bottom" id="gwl-uN-hvV"/>
@@ -317,14 +317,65 @@
                     <view key="view" contentMode="scaleToFill" id="HKA-61-Qvk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="miz-0e-Ltb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3d-g3-fXg" userLabel="titleLabel">
+                                <rect key="frame" x="16" y="486.5" width="288" height="33.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbQ-Ca-4XI" userLabel="addressLabel">
+                                <rect key="frame" x="16" y="528" width="288" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wwq-HF-dkH">
+                                <rect key="frame" x="16" y="20" width="46" height="46"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="8Ah-wp-mg8"/>
+                                    <constraint firstAttribute="height" constant="46" id="Eug-wu-TSG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZbQ-Ca-4XI" firstAttribute="top" secondItem="u3d-g3-fXg" secondAttribute="bottom" constant="8" id="70A-US-K4B"/>
+                            <constraint firstItem="miz-0e-Ltb" firstAttribute="top" secondItem="rmG-Ea-xJ9" secondAttribute="bottom" id="Mjn-H1-55d"/>
+                            <constraint firstItem="wwq-HF-dkH" firstAttribute="top" secondItem="rmG-Ea-xJ9" secondAttribute="bottom" constant="20" id="QSY-vJ-zAf"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="miz-0e-Ltb" secondAttribute="bottom" id="cNn-ZX-a6P"/>
+                            <constraint firstItem="ZbQ-Ca-4XI" firstAttribute="leading" secondItem="HKA-61-Qvk" secondAttribute="leadingMargin" id="cvh-lM-4lL"/>
+                            <constraint firstItem="ZbQ-Ca-4XI" firstAttribute="bottom" secondItem="miz-0e-Ltb" secondAttribute="bottom" constant="-10" id="dc4-Em-8oH"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="wwq-HF-dkH" secondAttribute="leading" id="jIn-CD-p5H"/>
+                            <constraint firstAttribute="trailing" secondItem="miz-0e-Ltb" secondAttribute="trailing" id="kWV-wf-maJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="u3d-g3-fXg" secondAttribute="trailing" id="nhK-A8-9a2"/>
+                            <constraint firstItem="miz-0e-Ltb" firstAttribute="leading" secondItem="HKA-61-Qvk" secondAttribute="leading" id="sig-zb-l1F"/>
+                            <constraint firstItem="u3d-g3-fXg" firstAttribute="leading" secondItem="HKA-61-Qvk" secondAttribute="leadingMargin" id="ss1-QH-TeF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZbQ-Ca-4XI" secondAttribute="trailing" id="xdB-GK-ATE"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Fq4-PQ-9Td"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="ZbQ-Ca-4XI" id="Hgi-Yt-U3t"/>
+                        <outlet property="placeImageView" destination="miz-0e-Ltb" id="A5o-3g-Agg"/>
+                        <outlet property="titleLabel" destination="u3d-g3-fXg" id="hOl-49-n5F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFp-IW-rhz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1167" y="-232"/>
+            <point key="canvasLocation" x="1181" y="-236"/>
         </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="Lsx-j3-xG0">
