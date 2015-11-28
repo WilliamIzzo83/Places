@@ -43,6 +43,11 @@ class PlacesListViewController : UITableViewController {
                 let place = self.availablePlaces[indexPath.row]
                 placeTVR.titleLabel.text = place.title
                 placeTVR.addressLabel.text = place.longAddress
+                placeTVR.scrimView.gradientColors = [
+                    UIColor(white: 0.0, alpha: 0.0),
+                    UIColor(white: 0.0, alpha: 0.4),
+                ]
+                
                 let imageUID = place.imageUID
                 dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
                     if let imageData = readDataInLibraryPath(imageUID) {
@@ -51,6 +56,8 @@ class PlacesListViewController : UITableViewController {
                         })
                     }
                 }
+                
+                
             }
             
             return cell
@@ -64,4 +71,61 @@ class PlacesListViewController : UITableViewController {
             }
         }
     }
+    
+    override func tableView(
+        tableView: UITableView,
+        canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.Delete
+    }
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        self.erasePlace(
+            self.availablePlaces[indexPath.row],
+            indexPath: indexPath)
+    }
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 200.0
+//    }
+    
+    func erasePlace(place:Place, indexPath:NSIndexPath) {
+        let alertController = UIAlertController(
+            title: nil,
+            message: "Erase place?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        alertController.addAction(
+            UIAlertAction(
+                title: "erase",
+                style: UIAlertActionStyle.Destructive,
+                handler: { (action) -> Void in
+                    let realm = try! Realm()
+                    try! realm.write({ () -> Void in
+                        realm.delete(place)
+                        
+                        self.availablePlaces = realm.objects(Place)
+                        
+                        self.tableView.beginUpdates()
+                        self.tableView.deleteRowsAtIndexPaths(
+                            [indexPath],
+                            withRowAnimation: UITableViewRowAnimation.None)
+                        self.tableView.endUpdates()
+                    })
+                }
+            )
+        )
+        
+        alertController.addAction(
+            UIAlertAction(
+                title: "cancel",
+                style: UIAlertActionStyle.Cancel,
+                handler: nil
+            )
+        )
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
 }

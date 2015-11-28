@@ -20,4 +20,14 @@ class Place: Object {
     dynamic var shortAddress : String?
     dynamic var longAddress : String?
     dynamic var addressData : NSData?
+    let tags = List<Tag>()
+}
+
+class Tag : Object {
+    dynamic var name = ""
+    dynamic var uuid = ""
+    
+    override class func primaryKey() -> String {
+        return "uuid"
+    }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D1BC97A1C09D04900AA8F6C /* TagSelectorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1BC9791C09D04900AA8F6C /* TagSelectorTableViewController.swift */; };
+		3D1BC97C1C0A63D700AA8F6C /* ScrimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1BC97B1C0A63D700AA8F6C /* ScrimView.swift */; };
 		3D35B0751BDEE0A500830B95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D35B0741BDEE0A500830B95 /* AppDelegate.swift */; };
 		3D35B07C1BDEE0A500830B95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D35B07A1BDEE0A500830B95 /* Main.storyboard */; };
 		3D35B07E1BDEE0A500830B95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D35B07D1BDEE0A500830B95 /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D1BC9791C09D04900AA8F6C /* TagSelectorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TagSelectorTableViewController.swift; path = controllers/TagSelectorTableViewController.swift; sourceTree = "<group>"; };
+		3D1BC97B1C0A63D700AA8F6C /* ScrimView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScrimView.swift; path = view/ScrimView.swift; sourceTree = "<group>"; };
 		3D35B0711BDEE0A500830B95 /* Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D35B0741BDEE0A500830B95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D35B07B1BDEE0A500830B95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 				3D35B09A1BE023B000830B95 /* AddPlaceViewController.swift */,
 				3D35B09C1BE02AA900830B95 /* PlacesListViewController.swift */,
 				3D78C47E1BEE6189006A63B0 /* DetailViewController.swift */,
+				3D1BC9791C09D04900AA8F6C /* TagSelectorTableViewController.swift */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				3D35B09F1BE02E2A00830B95 /* PlaceTVR.swift */,
+				3D1BC97B1C0A63D700AA8F6C /* ScrimView.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -266,6 +272,7 @@
 			files = (
 				3D35B0A61BE14B5400830B95 /* CameraCaputre.swift in Sources */,
 				3DE40D1B1BEA33AF003FC46D /* Gps.swift in Sources */,
+				3D1BC97A1C09D04900AA8F6C /* TagSelectorTableViewController.swift in Sources */,
 				3D3EEBAB1BE2B651003CF14D /* FastFileIO.swift in Sources */,
 				3D35B0A01BE02E2A00830B95 /* PlaceTVR.swift in Sources */,
 				3D35B09B1BE023B000830B95 /* AddPlaceViewController.swift in Sources */,
@@ -274,6 +281,7 @@
 				3D78C47F1BEE6189006A63B0 /* DetailViewController.swift in Sources */,
 				3D35B09D1BE02AA900830B95 /* PlacesListViewController.swift in Sources */,
 				3D35B08D1BE014F100830B95 /* Place.swift in Sources */,
+				3D1BC97C1C0A63D700AA8F6C /* ScrimView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
