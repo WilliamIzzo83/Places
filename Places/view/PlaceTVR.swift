@@ -18,7 +18,7 @@ class PlaceTVR : UITableViewCell {
     @IBOutlet weak var scrimView: ScrimView!
     
     weak var scrimLayer : CAGradientLayer?
-    static let shadowRadius = CGFloat(4.0)
+    static let shadowRadius = CGFloat(1.2)
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -26,19 +26,18 @@ class PlaceTVR : UITableViewCell {
         self.shadowView.layer.shadowOffset = CGSizeMake(0.0, 0.0)
         self.shadowView.layer.shadowRadius = PlaceTVR.shadowRadius
         self.shadowView.layer.shadowColor = UIColor(white: 0.0, alpha: 1.0).CGColor
-        self.shadowView.layer.shadowOpacity = 0.9
+        self.shadowView.layer.shadowOpacity = 0.6
     }
     
     override func setHighlighted(highlighted: Bool, animated: Bool) {
-        let caAnim = CABasicAnimation(keyPath: "shadowRadius")
-        caAnim.fromValue = CGFloat(highlighted) * PlaceTVR.shadowRadius
-        caAnim.toValue = CGFloat(!highlighted) * PlaceTVR.shadowRadius
         
-        caAnim.duration = 0.12
+        let shadowAnim = CABasicAnimation(keyPath: "shadowRadius")
+        shadowAnim.fromValue = CGFloat(highlighted) * PlaceTVR.shadowRadius
+        shadowAnim.toValue = CGFloat(!highlighted) * PlaceTVR.shadowRadius
+        shadowAnim.duration = 0.12
         
         self.shadowView.layer.shadowRadius = CGFloat(!highlighted) * PlaceTVR.shadowRadius
-        
-        self.shadowView.layer.addAnimation(caAnim, forKey: "shadowRadius")
+        self.shadowView.layer.addAnimation(shadowAnim, forKey: "shadowAnimations")
         
         
     }
