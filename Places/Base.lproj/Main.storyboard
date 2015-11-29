@@ -237,7 +237,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="place-tvr" rowHeight="250" id="XcA-6w-jNd" customClass="PlaceTVR" customModule="Places" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="250"/>
@@ -302,7 +302,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
-                                <color key="backgroundColor" white="0.96894667832167847" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="addressLabel" destination="3jr-jS-IT3" id="cWG-wG-6bf"/>
                                     <outlet property="placeImage" destination="SPb-za-9lK" id="XAJ-9T-0cG"/>
@@ -326,7 +326,7 @@
         <!--Detail Controller-->
         <scene sceneID="ZSe-Zi-LSw">
             <objects>
-                <viewController id="rcb-5r-63O" userLabel="Detail Controller" customClass="DetailViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="rcb-5r-63O" userLabel="Detail Controller" customClass="DetailViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rmG-Ea-xJ9"/>
                         <viewControllerLayoutGuide type="bottom" id="gwl-uN-hvV"/>
@@ -339,22 +339,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="424"/>
                                 <animations/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wwq-HF-dkH">
-                                <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="8Ah-wp-mg8"/>
-                                    <constraint firstAttribute="height" constant="46" id="Eug-wu-TSG"/>
-                                </constraints>
-                                <size key="titleShadowOffset" width="3" height="3"/>
-                                <state key="normal" image="ic_arrow_back_white_36pt">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.084025349650349648" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonAction" destination="rcb-5r-63O" eventType="touchUpInside" id="w3n-UR-3cN"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="ic_directions_18pt" translatesAutoresizingMaskIntoConstraints="NO" id="INF-7l-MzE">
                                 <rect key="frame" x="12" y="462" width="18" height="18"/>
                                 <animations/>
@@ -408,14 +392,12 @@
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.097127057611942291" green="0.72223162651062012" blue="0.70623749494552612" alpha="0.89780800359712243" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.098039215686274508" green="0.72156862745098038" blue="0.70588235294117641" alpha="0.89780800359712243" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="wwq-HF-dkH" firstAttribute="leading" secondItem="HKA-61-Qvk" secondAttribute="leading" id="0eE-oI-p9x"/>
                             <constraint firstItem="SHT-GU-6cW" firstAttribute="trailing" secondItem="miz-0e-Ltb" secondAttribute="trailing" id="8NA-JT-cXp"/>
                             <constraint firstItem="gwl-uN-hvV" firstAttribute="top" secondItem="K4q-p2-xFF" secondAttribute="bottom" constant="30" id="GWY-DH-gk8"/>
                             <constraint firstItem="kmK-5U-Mot" firstAttribute="leading" secondItem="HKA-61-Qvk" secondAttribute="leading" constant="12" id="OyP-Kv-jD3"/>
                             <constraint firstItem="INF-7l-MzE" firstAttribute="centerY" secondItem="VHB-Ou-Mtt" secondAttribute="centerY" id="QAl-85-J5K"/>
-                            <constraint firstItem="wwq-HF-dkH" firstAttribute="top" secondItem="rmG-Ea-xJ9" secondAttribute="bottom" id="QSY-vJ-zAf"/>
                             <constraint firstItem="VHB-Ou-Mtt" firstAttribute="leading" secondItem="INF-7l-MzE" secondAttribute="trailing" constant="18" id="TNj-Sn-W2h"/>
                             <constraint firstAttribute="topMargin" secondItem="miz-0e-Ltb" secondAttribute="top" id="Udp-MF-ERg"/>
                             <constraint firstItem="K4q-p2-xFF" firstAttribute="leading" secondItem="kmK-5U-Mot" secondAttribute="trailing" constant="18" id="X3b-BE-zSc"/>
@@ -527,10 +509,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lPC-YL-Z8Q" userLabel="Main Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aok-1q-GkR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="ic_arrow_back_white_36pt" backIndicatorTransitionMaskImage="ic_arrow_back_white_36pt" id="aok-1q-GkR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
+                        <color key="tintColor" red="0.098039215690000001" green="0.72156862749999995" blue="0.70588235290000001" alpha="0.69691434350000003" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

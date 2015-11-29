@@ -16,6 +16,14 @@ class PlacesListViewController : UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
 
+        self.navigationController?.navigationBar.setBackgroundImage(
+            nil,
+            forBarMetrics: UIBarMetrics.Default)
+        
+        self.navigationController?.navigationBar.backgroundColor = nil
+        self.navigationController?.view.backgroundColor = nil
+        self.navigationController?.navigationBar.shadowImage = nil
+        
         let realm = try! Realm()
         self.availablePlaces = realm.objects(Place)
         self.tableView.reloadData()

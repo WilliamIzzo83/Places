@@ -40,10 +40,16 @@ class DetailViewController : UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
         
+        self.navigationController?.navigationBar.setBackgroundImage(
+            UIImage(),
+            forBarMetrics: UIBarMetrics.Default)
         
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clearColor()
+        self.navigationController?.view.backgroundColor = UIColor.clearColor()
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
+        self.placeImageView.backgroundColor = UIColor.redColor()
         
         let imageUID = self.place.imageUID
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
