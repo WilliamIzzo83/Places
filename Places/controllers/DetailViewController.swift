@@ -49,8 +49,6 @@ class DetailViewController : UIViewController {
         self.navigationController?.view.backgroundColor = UIColor.clearColor()
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        self.placeImageView.backgroundColor = UIColor.redColor()
-        
         let imageUID = self.place.imageUID
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
             if let imageData = readDataInLibraryPath(imageUID) {
@@ -72,7 +70,7 @@ class DetailViewController : UIViewController {
             
             for tag in self.place.tags {
                 if self.place.tags.last != tag {
-                    tagString += tag.name + ", "
+                    tagString += tag.name + ",\n"
                 }else {
                     tagString += tag.name
                 }
