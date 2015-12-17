@@ -15,7 +15,7 @@ class PlacesListViewController : UITableViewController {
     var availablePlaces : Results<Place>!
 
     override func viewWillAppear(animated: Bool) {
-
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.setBackgroundImage(
             nil,
             forBarMetrics: UIBarMetrics.Default)
@@ -24,8 +24,10 @@ class PlacesListViewController : UITableViewController {
         self.navigationController?.view.backgroundColor = nil
         self.navigationController?.navigationBar.shadowImage = nil
         
+        
+        
         let realm = try! Realm()
-        self.availablePlaces = realm.objects(Place)
+        self.availablePlaces = realm.objects(Place).sorted("timestamp", ascending: true)
         self.tableView.reloadData()
     }
     
@@ -86,15 +88,15 @@ class PlacesListViewController : UITableViewController {
         return true
     }
     
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.Delete
-    }
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        self.erasePlace(
-            self.availablePlaces[indexPath.row],
-            indexPath: indexPath)
-    }
+//    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+//        return UITableViewCellEditingStyle.Delete
+//    }
+//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        self.erasePlace(
+//            self.availablePlaces[indexPath.row],
+//            indexPath: indexPath)
+//    }
 //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 //        return 200.0
 //    }

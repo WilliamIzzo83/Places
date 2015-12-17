@@ -21,25 +21,9 @@ class PlaceTVR : UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-//        self.shadowView.layer.shadowOffset = CGSizeMake(0.0, 0.0)
-//        self.shadowView.layer.shadowRadius = PlaceTVR.shadowRadius
-//        self.shadowView.layer.shadowColor = UIColor(white: 0.0, alpha: 1.0).CGColor
-//        self.shadowView.layer.shadowOpacity = 0.6
     }
     
-    override func setHighlighted(highlighted: Bool, animated: Bool) {
-        
-//        let shadowAnim = CABasicAnimation(keyPath: "shadowRadius")
-//        shadowAnim.fromValue = CGFloat(highlighted) * PlaceTVR.shadowRadius
-//        shadowAnim.toValue = CGFloat(!highlighted) * PlaceTVR.shadowRadius
-//        shadowAnim.duration = 0.12
-//        
-//        self.shadowView.layer.shadowRadius = CGFloat(!highlighted) * PlaceTVR.shadowRadius
-//        self.shadowView.layer.addAnimation(shadowAnim, forKey: "shadowAnimations")
-        
-        
-    }
+    override func setHighlighted(highlighted: Bool, animated: Bool) {}
     
     override func setSelected(selected: Bool, animated: Bool) {}
 }

@@ -20,6 +20,7 @@ class Place: Object {
     dynamic var shortAddress : String?
     dynamic var longAddress : String?
     dynamic var addressData : NSData?
+    dynamic var timestamp : Double = NSDate().timeIntervalSinceReferenceDate
     let tags = List<Tag>()
 }
 

@@ -14,7 +14,8 @@ class MainViewController: UIViewController {
     private var gpsSession : GpsSingleLocationSession?
     private weak var placesListController : PlacesListViewController!
     
-    override func viewDidLoad() {        
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.addButton.layer.cornerRadius = 60.0 / 2.0
         self.addButton.layer.borderColor = UIColor.whiteColor().CGColor
         self.addButton.layer.borderWidth = 2.0
@@ -22,7 +23,13 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.setBackgroundImage(
+            UIImage(),
+            forBarMetrics: UIBarMetrics.Default)
+        
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clearColor()
+        self.navigationController?.view.backgroundColor = UIColor.clearColor()
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -34,11 +41,6 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func toggleEditAction(sender: AnyObject) {
-        let placesTableView = self.placesListController.tableView
-        self.placesListController.tableView.setEditing(!placesTableView.editing, animated: true)
-        
-    }
     @IBAction func done(segue:UIStoryboardSegue){
         
     }

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         let realmConfiguration = Realm.Configuration(
-            schemaVersion : 2,
+            schemaVersion : 3,
             migrationBlock : { migration, oldSchemaVersion in
                 
         })

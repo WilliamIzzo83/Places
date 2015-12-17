@@ -114,6 +114,8 @@ private class PlaceBuilder {
             return
         }
         
+        place.timestamp = NSDate().timeIntervalSince1970
+        
         self.didBuildPlace(place:self.place)
     }
     

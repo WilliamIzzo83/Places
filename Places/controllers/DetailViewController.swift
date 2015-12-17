@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import RealmSwift
 
 class DetailViewController : UIViewController {
     @IBOutlet weak var placeImageView: UIImageView!
@@ -48,6 +49,15 @@ class DetailViewController : UIViewController {
         self.navigationController?.navigationBar.backgroundColor = UIColor.clearColor()
         self.navigationController?.view.backgroundColor = UIColor.clearColor()
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        let settingsBarButton = UIBarButtonItem(
+            image: UIImage(named: "ic_build_36pt"),
+            style: UIBarButtonItemStyle.Plain,
+            target: self,
+            action: "showItemAction:")
+        
+        
+        self.navigationItem.rightBarButtonItem = settingsBarButton
         
         let imageUID = self.place.imageUID
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
@@ -102,6 +112,32 @@ class DetailViewController : UIViewController {
     
     @IBAction func done(segue:UIStoryboardSegue){
         
+    }
+    
+    func showItemAction(sender:UIBarButtonItem) {
+        let alertController = UIAlertController(title: "What shall we do?", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        alertController.addAction(
+            UIAlertAction(title: "Delete item", style: UIAlertActionStyle.Destructive, handler: { (deleteAction) -> Void in
+                // 1.remove item from realm
+                let realm = try! Realm()
+                try! realm.write({ () -> Void in
+                    realm.delete(self.place)
+                })
+                
+                // 2.unwind segue
+                self.navigationController?.popViewControllerAnimated(true)
+            })
+        )
+        
+        alertController.addAction(
+            UIAlertAction(
+                title: "Cancel",
+                style: UIAlertActionStyle.Cancel,
+                handler: nil)
+        )
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
