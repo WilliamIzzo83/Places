@@ -20,7 +20,7 @@ class DetailViewController : UIViewController {
     @IBOutlet weak var scrimView: ScrimView!
 
     var place : Place!
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +28,10 @@ class DetailViewController : UIViewController {
         self.tagButton.titleLabel?.numberOfLines = 0
         
         self.scrimView.gradientColors = [
-            
             UIColor(white: 0.0, alpha: 0.0),
             UIColor(white: 0.0, alpha: 0.6),
-            
         ]
-        
-
-        
     }
-    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

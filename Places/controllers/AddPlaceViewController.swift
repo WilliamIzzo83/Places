@@ -13,6 +13,7 @@ import AVFoundation
 import CoreLocation
 import AddressBookUI
 import Contacts
+
 private class PlaceBuilder {
     typealias didBuildPlaceListener = (place:Place) -> Void
     private var didBuildPlace : didBuildPlaceListener!
@@ -126,20 +127,59 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var placeTitleOverlay : UIView!
     @IBOutlet weak var addButtonBkg: UIView!
     @IBOutlet weak var addButtonInnerView: UIView!
+    
     private var forceResignResponder = false
     private var cameraCapture : CameraCapture!
     private var gpsSession : GpsSingleLocationSession?
     private var placeBuilder  : PlaceBuilder!
     
     @IBOutlet weak var addressTextField: UITextField!
+    
+    private var overlayPlaceDataViewHidden : Bool {
+        get {
+            return self.placeTitleOverlay.hidden
+        }
+        
+        set(value) {
+            if value == false {
+                self.placeTitleOverlay.hidden = false
+                self.placeTitleOverlay.alpha = 0.0
+                UIView.animateWithDuration(
+                    0.25,
+                    delay: 0.0,
+                    options: UIViewAnimationOptions.CurveEaseIn,
+                    animations: { () -> Void in
+                        self.placeTitleOverlay.alpha = 1.0
+                    },
+                    completion: nil)
+            } else {
+                self.placeTitleOverlay.alpha = 1.0
+                UIView.animateWithDuration(
+                    0.25,
+                    delay: 0.0,
+                    options: UIViewAnimationOptions.CurveEaseIn,
+                    animations: { () -> Void in
+                        self.placeTitleOverlay.alpha = 0.0
+                    },
+                    completion: { (completed:Bool) -> Void in
+                        self.placeTitleOverlay.hidden = true
+                })
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         self.forceResignResponder = false
-        self.titleTextField.becomeFirstResponder()
+        
+        // Adjust capture button layer so that it becomes rounded
         self.addButtonBkg.layer.cornerRadius = 40.0
         self.addButtonInnerView.layer.cornerRadius = 35
-        
         self.addButtonInnerView.layer.borderWidth = 3
         self.addButtonInnerView.layer.borderColor = UIColor.blackColor().CGColor
+        
+        // Hide overlay view
+        self.placeTitleOverlay.hidden = true
+        
         
         self.placeBuilder = PlaceBuilder(didBuildPlace: { (place) -> Void in
             // save & return
@@ -148,7 +188,6 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
                 realm.add(place)
                 self.performSegueWithIdentifier("unwind-add-place", sender: self)
             })
-            
         })
         
         CameraCaptureBuilder.build { (session) -> Void in
@@ -186,20 +225,18 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func retakePicture(sender:UIButton) {
+        self.view.endEditing(true)
+        self.overlayPlaceDataViewHidden = true;
+    }
+    
     @IBAction func porcodio(textfield:UITextField) {
         if let text = textfield.text {
             guard text.characters.count > 0 else {
                 return
             }
             textfield.resignFirstResponder()
-            UIView.animateWithDuration(
-                0.4,
-                delay: 0.3,
-                options: UIViewAnimationOptions.CurveEaseIn,
-                animations: { () -> Void in
-                    self.placeTitleOverlay.alpha = 0.0
-                },
-                completion: nil)
+            self.placeBuilder.title = text
         }
     }
    
@@ -231,30 +268,15 @@ class AddPlaceViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func reinputTitle(sender: AnyObject) {
-        UIView.animateWithDuration(
-            0.4,
-            delay: 0.2,
-            options: UIViewAnimationOptions.CurveEaseOut,
-            animations: { () -> Void in
-                self.placeTitleOverlay.alpha = 1.0
-            },
-            completion: { (completed)->Void in
-                self.titleTextField.becomeFirstResponder()
-        })
     }
     
-    @IBAction func addAction(sender:UIButton){
+    @IBAction func takePictureAction(sender:UIButton){
         self.addButtonInnerView.backgroundColor = UIColor.whiteColor()
-        
-        if let title = self.titleTextField.text {
-            self.placeBuilder.title = title
-        }
-        
         self.cameraCapture.currentSession?.captureFrame({ (imageData, error) -> Void in
             if imageData != nil {
                 let imageUID = NSUUID().UUIDString
                 writeDataInLibraryPath(imageData!, filename: imageUID)
-    
+                self.overlayPlaceDataViewHidden = false;
                 self.placeBuilder.imageUID = imageUID
             }
         })

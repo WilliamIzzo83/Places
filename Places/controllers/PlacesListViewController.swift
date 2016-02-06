@@ -88,19 +88,6 @@ class PlacesListViewController : UITableViewController {
         return true
     }
     
-//    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-//        return UITableViewCellEditingStyle.Delete
-//    }
-//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        
-//        self.erasePlace(
-//            self.availablePlaces[indexPath.row],
-//            indexPath: indexPath)
-//    }
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 200.0
-//    }
-    
     func erasePlace(place:Place, indexPath:NSIndexPath) {
         let alertController = UIAlertController(
             title: nil,
